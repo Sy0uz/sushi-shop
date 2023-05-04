@@ -1,0 +1,12 @@
+@import './variables.scss';
+
+* {
+    font-family: 'Comfortaa', cursive;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: $gCyan;
+}

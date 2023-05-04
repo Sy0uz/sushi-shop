@@ -1,0 +1,42 @@
+@import './variables.scss';
+
+.cart_container {
+    display: flex;
+    justify-content: flex-end;
+
+    .cart_link {
+        background-color: $gRed;
+        color: white;
+        text-decoration: none;
+        padding: 10px 18px;
+        border-radius: 24px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        transition: 0.1s background-color ease-in-out;
+
+        &:hover {
+            background-color: darken($gRed, 4);
+        }
+
+        &:active {
+            transform: translateY(1px)
+        }
+
+        .price {
+            border-right: 1px solid rgba(#FFFFFF, 0.6);
+            padding-right: 12px;
+        }
+
+        .amount_container {
+            padding-left: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            .img_container {
+                width: 25px;
+            }
+        }
+    }
+}

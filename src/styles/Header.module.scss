@@ -1,0 +1,9 @@
+@import './variables.scss';
+
+.wrapper {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px 40px;
+    border-bottom: 1px solid $gWhite;
+}
