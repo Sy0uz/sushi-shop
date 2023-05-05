@@ -1,26 +1,28 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import s from './../../styles/Searchbar.module.scss'
+import useSushiStore from '../../store/sushiStore';
+import { shallow } from 'zustand/shallow'
 
 const Searchbar: FC = () => {
 
-    const [value, setValue] = useState<string>('');
+    const [query, updateQuery] = useSushiStore(state => [state.query, state.updateQuery], shallow)
 
     const clearValue = () => {
-        setValue('');
+        updateQuery('');
     }
 
     return (
         <div className={s.searchbar_container}>
             <img className={s.loupe} src="images/search.svg" alt="" />
             <input
-                value={value}
-                onChange={e => setValue(e.target.value)}
+                value={query}
+                onChange={e => updateQuery(e.target.value)}
                 type="text"
                 className={s.searchbar}
                 placeholder='Поиск...'
             />
             {
-                value
+                query
                     ?
                     <img className={s.close} src="images/close.svg" alt="" onClick={clearValue} />
                     :

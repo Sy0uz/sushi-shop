@@ -9,6 +9,7 @@ interface CategoryProps {
 }
 
 const Category: FC<CategoryProps> = ({ title, value, onClick, active = false }) => {
+
     return (
         <li onClick={() => onClick(value)} className={active ? [s.category_container, s.active].join(' ') : s.category_container}>
             {title}

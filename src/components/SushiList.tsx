@@ -1,23 +1,17 @@
-import { FC, useEffect, useState } from 'react'
-import { ISushi } from '../types/ISushi'
-import { PostService } from '../API/PostService';
+import { FC } from 'react';
 import SushiCard from './SushiCard';
-import s from './../styles/SushiList.module.scss'
+import s from './../styles/SushiList.module.scss';
+import { ISushi } from '../types/ISushi';
+import { IOrderItem } from '../types/IOrderItem';
 
-const SushiList: FC = () => {
+interface ListProps {
+    sushi: ISushi[];
+    order: IOrderItem[];
+}
 
-    const [list, setList] = useState<ISushi[]>([]);
+const SushiList: FC<ListProps> = ({ sushi, order }) => {
 
-    const fetchSushi = async () => {
-        const response = await PostService.getSushi();
-        setList(response);
-    }
-
-    useEffect(() => {
-        fetchSushi();
-    }, [])
-
-    if (!list.length)
+    if (!sushi.length)
         return (
             <div>Загрузка...</div>
         )
@@ -25,7 +19,10 @@ const SushiList: FC = () => {
     return (
         <div className={s.wrapper}>
             {
-                list.map((item) => <SushiCard key={item.id} sushi={item} />)
+                sushi.map((item) => {
+                    let isInCart = order.find(elem => elem.id === item.id);
+                    return <SushiCard key={item.id} sushi={item} added={isInCart ? true : false} count={isInCart ? isInCart.count : 0} />
+                })
             }
         </div>
     )

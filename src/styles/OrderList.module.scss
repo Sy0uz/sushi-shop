@@ -1,0 +1,23 @@
+@import './variables.scss';
+
+
+.list_title {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 100px;
+    font-weight: bold;
+    font-size: 20px;
+
+    border-bottom: 1px solid $gBlack;
+    padding-bottom: 8px;
+
+    .amount_title {
+        text-align: center;
+    }
+}
+
+.list_items {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

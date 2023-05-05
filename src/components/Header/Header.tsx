@@ -2,7 +2,7 @@ import { FC } from 'react'
 import s from './../../styles/Header.module.scss'
 import Searchbar from './Searchbar'
 import Logo from './Logo'
-import CartBtn from './CartBtn'
+import OrderBtn from './OrderBtn'
 
 interface HeaderProps {
     type?: 'default' | 'short';
@@ -11,19 +11,19 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ type = 'default' }) => {
     if (type === 'short')
         return (
-            <div className={s.wrapper}>
+            <header className={s.wrapper}>
                 <Logo />
-            </div>
+            </header>
         )
 
     return (
-        <div className={s.wrapper}>
+        <header className={s.wrapper}>
 
             <Logo />
             <Searchbar />
-            <CartBtn />
+            <OrderBtn />
 
-        </div>
+        </header>
     )
 }
 

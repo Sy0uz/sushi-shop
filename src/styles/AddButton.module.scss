@@ -1,0 +1,68 @@
+@import './variables.scss';
+
+.button {
+    background-color: $gRed;
+    color: white;
+    border: 2px solid $gRed;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 8px 0;
+    border-radius: 24px;
+    width: 130px;
+    cursor: pointer;
+    transition: 0.2s background-color ease-in-out, 0.2s color ease-in-out, 0.2s border-color ease-in-out;
+
+    &:hover {
+        background-color: darken($gRed, 4);
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+
+    &.added {
+        position: relative;
+        background-color: white;
+        color: $gRed;
+
+        >span {
+            display: block;
+            transform: translateX(-8px);
+        }
+
+        &::after {
+            content: attr(data-amount);
+            background-color: $gRed;
+            color: white;
+            border-radius: 100px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 7px;
+            right: 7px;
+        }
+    }
+}
+
+.button_container {
+    display: flex;
+    align-items: center;
+
+    .deleteBtn {
+        background-color: unset;
+        border: none;
+        cursor: pointer;
+        padding: 3px 8px 3px 3px;
+
+        &:active {
+            transform: translateY(1px);
+        }
+
+        .deleteBtn_image {
+            width: 25px;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import CartPage from "../pages/CartPage";
+import OrderPage from "../pages/OrderPage";
 import ErrorPage from "../pages/ErrorPage";
 import HomePage from "../pages/HomePage";
 
@@ -9,11 +9,11 @@ export interface IRoute {
 
 export enum RoutePath {
     HOME = "/home",
-    CART = "/cart",
+    ORDER = "/order",
     ERROR = "/error"
 }
 
 export const publicRoutes: IRoute[] = [
     { path: RoutePath.HOME, component: HomePage },
-    { path: RoutePath.CART, component: CartPage }
+    { path: RoutePath.ORDER, component: OrderPage }
 ]

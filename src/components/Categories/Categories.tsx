@@ -1,15 +1,17 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import Category from './Category';
 import s from './../../styles/Categories.module.scss'
+import useSushiStore from '../../store/sushiStore';
+import { shallow } from 'zustand/shallow'
 
 const Categories: FC = () => {
 
     const data = [{ title: 'Все', value: -1 }, { title: 'Классические роллы', value: 0 }, { title: 'Запеченные роллы', value: 1 }, { title: 'Темпура', value: 2 }, { title: 'Мини роллы', value: 3 }];
 
-    const [active, setActive] = useState<number>(-1);
+    const [active, updateFilter] = useSushiStore(state => [state.filter, state.updateFilter], shallow);
 
     const handler = (value: number) => {
-        setActive(value);
+        updateFilter(value);
     }
 
     return (
