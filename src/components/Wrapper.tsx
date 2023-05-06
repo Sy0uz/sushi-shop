@@ -8,8 +8,12 @@ interface WrapperProps extends PropsWithChildren {
 
 const Wrapper: FC<WrapperProps> = ({ className, style, children }) => {
     return (
-        <div style={style} className={className ? [s.wrapper, className].join(' ') : s.wrapper}>
-            {children}
+        <div style={style}
+            className={className ? [s.wrapper, className].join(' ') : s.wrapper}
+        >
+            {
+                children
+            }
         </div>
     )
 }

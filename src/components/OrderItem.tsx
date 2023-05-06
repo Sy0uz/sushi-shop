@@ -9,6 +9,7 @@ interface OrderItemProps {
 const OrderItem: FC<OrderItemProps> = ({ item }) => {
     return (
         <div className={s.order_container}>
+            <img className={s.image} src={item.imageUrl} alt={`${item.title}-img`} />
             <h3>{item.title}</h3>
             <span>{item.weight}г.</span>
             <span>{item.price} ₽</span>

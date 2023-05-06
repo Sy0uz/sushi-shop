@@ -3,6 +3,14 @@
 .searchbar_container {
     position: relative;
 
+    @media (max-width:860px) {
+        order: 3;
+    }
+
+    @media (max-width:760px) {
+        width: 100%;
+    }
+
     .searchbar {
         font-size: 16px;
         border: 1px solid $gWhite;

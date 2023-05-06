@@ -18,11 +18,9 @@ const Header: FC<HeaderProps> = ({ type = 'default' }) => {
 
     return (
         <header className={s.wrapper}>
-
             <Logo />
             <Searchbar />
             <OrderBtn />
-
         </header>
     )
 }

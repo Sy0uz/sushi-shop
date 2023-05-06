@@ -1,35 +1,32 @@
 import { FC, useEffect, useMemo } from 'react'
-import Categories from '../components/Categories/Categories'
 import SushiList from '../components/SushiList'
 import useSushiStore from '../store/sushiStore';
-import { shallow } from 'zustand/shallow';
 import useOrderStore from '../store/orderStore';
+import Filter from '../components/Filter';
 
 const HomePage: FC = () => {
 
-    const [sushi, query, filter, fetchSushi] = useSushiStore(state => [state.sushi, state.query, state.filter, state.fetchSushi], shallow);
+    const [sushi, query, filter, sortBy, orderBy, isLoading, fetchSortedSushi] = useSushiStore(state => [state.sushi, state.query, state.filter, state.sortBy, state.orderBy, state.isSushiLoading, state.fetchSortedSushi]);
     const order = useOrderStore(state => state.order);
 
     useEffect(() => {
-        fetchSushi();
-    }, [])
-
-    const sushiFiltered = useMemo(() => {
-        if (filter === -1)
-            return sushi;
-        return sushi.filter((item) => item.category === filter);
-    }, [filter, sushi])
+        fetchSortedSushi(sortBy, filter, orderBy);
+    }, [sortBy, filter, orderBy])
 
     const sushiSearch = useMemo(() => {
         if (!query)
-            return sushiFiltered;
-        return sushiFiltered.filter((item) => item.title.includes(query.trim()));
-    }, [query, sushiFiltered])
+            return sushi;
+        return sushi.filter((item) => item.title.toLowerCase().includes(query.trim().toLowerCase()));
+    }, [query, sushi])
 
     return (
         <article className='wrapper'>
-            <Categories />
-            <SushiList sushi={sushiSearch} order={order} />
+            <Filter />
+            <SushiList
+                sushi={sushiSearch}
+                order={order}
+                loading={isLoading}
+            />
         </article>
     )
 }

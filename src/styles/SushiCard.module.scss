@@ -4,12 +4,13 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    max-width: 750px;
 
     .information {
         width: 100%;
         background-color: $gWhite;
         border-radius: 8px;
-        padding: 6px;
+        padding: 4px;
         z-index: 1;
         height: 100%;
         display: flex;
@@ -25,7 +26,7 @@
         .description_container {
             display: flex;
             justify-content: space-between;
-            margin-top: 6px;
+            margin-top: 4px;
 
             >div {
                 border-radius: 8px;

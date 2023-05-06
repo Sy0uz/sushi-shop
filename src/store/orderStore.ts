@@ -39,7 +39,7 @@ const useOrderStore = create<State & Action>()(devtools((set) => ({
                 })
                 : [
                     ...state.order,
-                    { id: sushi.id, weight: sushi.weight, price: sushi.price, count: 1, title: sushi.title }
+                    { id: sushi.id, title: sushi.title, imageUrl: sushi.imageUrl, weight: sushi.weight, price: sushi.price, count: 1 }
                 ],
             price: state.price + sushi.price,
             amount: state.amount + 1

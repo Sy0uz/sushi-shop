@@ -10,6 +10,7 @@ interface OrderListProps {
 const OrderList: FC<OrderListProps> = ({ list }) => {
 
     const tableTitles = [
+        '#',
         'Название',
         'Вес порции',
         'Цена',
@@ -20,7 +21,15 @@ const OrderList: FC<OrderListProps> = ({ list }) => {
         <section>
             <div className={s.list_title}>
                 {
-                    tableTitles.map((item, i) => <span key={item} className={i === tableTitles.length - 1 ? s.amount_title : ''}>{item}</span>)
+                    tableTitles.map((item, i) =>
+                        <span
+                            key={item}
+                            className={i === tableTitles.length - 1 || i === 0 ? s.center : ''}
+                        >
+                            {
+                                item
+                            }
+                        </span>)
                 }
             </div>
             <div className={s.list_items}>

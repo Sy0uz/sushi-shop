@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import s from './../../styles/Cartbtn.module.scss'
+import s from './../../styles/OrderBtn.module.scss'
 import { Link } from 'react-router-dom'
 import { RoutePath } from '../../router'
 import useCartStore from '../../store/orderStore'

@@ -32,7 +32,12 @@ const SushiCard: FC<SushiProps> = ({ sushi, added, count }) => {
                 <div className={s.description_container}>
                     <div>{sushi.price} ₽</div>
                     <div>
-                        <AddButton onAdd={addHandler} onDelete={deleteHandler} added={added} count={count} />
+                        <AddButton
+                            onAdd={addHandler}
+                            onDelete={deleteHandler}
+                            added={added}
+                            count={count}
+                        />
                     </div>
                 </div>
             </div>
@@ -41,4 +46,4 @@ const SushiCard: FC<SushiProps> = ({ sushi, added, count }) => {
     )
 }
 
-export default SushiCard
+export default SushiCard;

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Category from './Category';
 import s from './../../styles/Categories.module.scss'
 import useSushiStore from '../../store/sushiStore';
-import { shallow } from 'zustand/shallow'
+import { shallow } from 'zustand/shallow';
 
 const Categories: FC = () => {
 

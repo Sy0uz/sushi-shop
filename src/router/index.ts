@@ -1,5 +1,4 @@
 import OrderPage from "../pages/OrderPage";
-import ErrorPage from "../pages/ErrorPage";
 import HomePage from "../pages/HomePage";
 
 export interface IRoute {
@@ -15,5 +14,5 @@ export enum RoutePath {
 
 export const publicRoutes: IRoute[] = [
     { path: RoutePath.HOME, component: HomePage },
-    { path: RoutePath.ORDER, component: OrderPage }
+    { path: RoutePath.ORDER, component: OrderPage },
 ]
