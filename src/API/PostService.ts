@@ -8,13 +8,31 @@ export class PostService {
         return response.data;
     }
 
-    static async getSortedSushi(sortBy?: SORT_BY, category?: number, order: 'desc' | 'asc' = 'desc'): Promise<ISushi[]> {
-        const reponse = await axios.get<ISushi[]>('https://645650645f9a4f23614088c6.mockapi.io/sushi', {
-            params: {
+    static async getSortedSushi(sortBy: SORT_BY, category: number, order: 'desc' | 'asc' = 'desc', page: number = 1, title: string = '', limit: number = 8): Promise<ISushi[]> {
+
+        let obj = {
+            sortBy,
+            order,
+            limit,
+            page
+        }
+
+        let params = {}
+
+        if (title) {
+            params = {
                 sortBy,
-                category: category !== undefined && category !== -1 ? category : '',
-                order
+                order,
+                limit,
+                page,
+                title
             }
+        }
+        else if (category !== -1) params = { ...obj, category }
+        else params = obj;
+
+        const reponse = await axios.get<ISushi[]>('https://645650645f9a4f23614088c6.mockapi.io/sushi', {
+            params
         })
         return reponse.data;
     }

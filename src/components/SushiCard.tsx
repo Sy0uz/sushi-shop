@@ -27,18 +27,16 @@ const SushiCard: FC<SushiProps> = ({ sushi, added, count }) => {
             <div className={s.image_container} style={{
                 backgroundImage: `url(${sushi.imageUrl})`
             }} />
-            <div className={s.information}>
+            <div className={added ? [s.information, s.added].join(' ') : s.information}>
                 <h3 className={s.title}>{sushi.title}</h3>
                 <div className={s.description_container}>
-                    <div>{sushi.price} ₽</div>
-                    <div>
-                        <AddButton
-                            onAdd={addHandler}
-                            onDelete={deleteHandler}
-                            added={added}
-                            count={count}
-                        />
-                    </div>
+                    <div className={s.price}>{sushi.price} ₽</div>
+                    <AddButton
+                        onAdd={addHandler}
+                        onDelete={deleteHandler}
+                        added={added}
+                        count={count}
+                    />
                 </div>
             </div>
 

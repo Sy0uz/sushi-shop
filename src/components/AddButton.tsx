@@ -11,21 +11,15 @@ interface ButtonProps {
 const AddButton: FC<ButtonProps> = ({ onAdd, onDelete, added, count }) => {
     return (
         <div className={s.button_container}>
-            {
-                added
-                    ?
-                    <button onClick={onDelete} className={s.deleteBtn}>
-                        <img className={s.deleteBtn_image} src="/images/minus.svg" alt="minus-btn" />
-                    </button>
-                    :
-                    <></>
-            }
+            <button onClick={onDelete} className={added ? s.deleteBtn : [s.deleteBtn, s.closed].join(' ')}>
+                <img className={s.deleteBtn_image} src="/images/minus.svg" alt="minus-btn" />
+            </button>
             <button
                 data-amount={count}
                 onClick={onAdd}
                 className={added ? [s.button, s.added].join(' ') : s.button}
             >
-                <span>{added ? 'Добавлен' : 'Добавить'}</span>
+                <span>Добавить</span>
             </button>
         </div>
 

@@ -13,7 +13,9 @@ const CartBtn: FC = () => {
             <Link to={RoutePath.ORDER} className={s.cart_link}>
                 <span className={s.price}>{price} ₽</span>
                 <div className={s.amount_container}>
-                    <div className={s.img_container}><img src="/images/bagBuy.svg" alt="cart" /></div>
+                    <div className={s.img_container}>
+                        <img src="/images/bagBuy.svg" alt="cart" />
+                    </div>
                     <div>{amount}</div>
                 </div>
             </Link>

@@ -8,7 +8,7 @@ const Categories: FC = () => {
 
     const data = [{ title: 'Все', value: -1 }, { title: 'Классические роллы', value: 0 }, { title: 'Запеченные роллы', value: 1 }, { title: 'Темпура', value: 2 }, { title: 'Мини роллы', value: 3 }];
 
-    const [active, updateFilter] = useSushiStore(state => [state.filter, state.updateFilter], shallow);
+    const [filter, updateFilter] = useSushiStore(state => [state.filter, state.updateFilter], shallow);
 
     const handler = (value: number) => {
         updateFilter(value);
@@ -22,7 +22,7 @@ const Categories: FC = () => {
                         key={item.value}
                         title={item.title}
                         value={item.value}
-                        active={active === item.value ? true : false}
+                        active={filter === item.value ? true : false}
                         onClick={handler}
                     />
                 )

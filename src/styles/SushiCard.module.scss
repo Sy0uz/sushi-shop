@@ -1,34 +1,42 @@
 @import './variables.scss';
 
+%animation {
+    transition: 0.2s all ease-in-out;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
     height: 100%;
     max-width: 750px;
+    overflow: hidden;
 
     .information {
         width: 100%;
         background-color: $gWhite;
         border-radius: 8px;
-        padding: 4px;
-        z-index: 1;
+        padding: 6px;
+        z-index: 2;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        @extend %animation;
 
         .title {
             background-color: white;
-            padding: 6px 10px;
+            padding: 8px 10px;
             border-radius: 8px;
+            @extend %animation;
         }
 
         .description_container {
             display: flex;
             justify-content: space-between;
-            margin-top: 4px;
+            margin-top: 6px;
 
-            >div {
+            .price {
+                @extend %animation;
                 border-radius: 8px;
                 background-color: white;
                 padding: 4px 10px;
@@ -36,6 +44,22 @@
                 align-items: center;
                 font-size: 20px;
                 font-weight: bold;
+            }
+        }
+
+        &.added {
+            background-color: $gRed;
+
+            .title {
+                background-color: $gRed;
+                color: white;
+            }
+
+            .description_container {
+                .price {
+                    color: white;
+                    background-color: $gRed;
+                }
             }
         }
     }
@@ -48,8 +72,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     transition: 0.2s transform ease-in-out;
+    z-index: 0;
 
     .wrapper:hover & {
-        transform: scale(1.15);
+        transform: scale(1.2);
     }
 }
