@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import s from './../../styles/Header.module.scss'
-import Searchbar from './Searchbar'
-import Logo from './Logo'
-import OrderBtn from './OrderBtn'
+import s from './Header.module.scss'
+import Searchbar from './Searchbar/Searchbar'
+import Logo from './Logo/Logo'
+import OrderBtn from './OrderButton/OrderButton'
 
 interface HeaderProps {
     type?: 'default' | 'short';

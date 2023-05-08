@@ -1,11 +1,12 @@
 import { FC, useEffect } from 'react';
 import useOrderStore from '../store/orderStore';
-import OrderList from '../components/OrderList';
-import s from './../styles/OrderPage.module.scss';
+import { shallow } from 'zustand/shallow';
+import OrderList from '../components/Order/OrderList/OrderList';
+import OrdertTotal from '../components/Order/OrderTotal/OrdertTotal';
 
 const OrderPage: FC = () => {
 
-    const [order, updateOrderPage, price, amount] = useOrderStore(state => [state.order, state.updateOrderPage, state.price, state.amount]);
+    const [updateOrderPage] = useOrderStore(state => [state.updateOrderPage], shallow);
 
     useEffect(() => {
         updateOrderPage(true);
@@ -15,22 +16,15 @@ const OrderPage: FC = () => {
         }
     }, [])
 
-    if (!order.length)
-        return (
-            <article className='wrapper'>
-                <section className={s.empty_order_container}>
-                    <h2 className={s.empty_order_title}>Корзина пуста</h2>
-                    <span>Ваша корзина пуста. Добавьте в нее товар, прежде чем оформить заказ.</span>
-                    <img src="/images/cart.svg" className={s.empty_order_image} alt="Cart" />
-                </section>
-            </article>
-        )
-
     return (
-        <article className='wrapper'>
-            <OrderList list={order} />
-        </article>
+        <>
+            <article className='wrapper'>
+                <OrderList />
+            </article>
+            <OrdertTotal />
+        </>
+
     )
 }
 
-export default OrderPage
+export default OrderPage;

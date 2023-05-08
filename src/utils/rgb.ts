@@ -3,7 +3,7 @@ async function get_average_rgb(src: string): Promise<Uint8ClampedArray> {
         let context = document.createElement('canvas').getContext('2d');
         context!.imageSmoothingEnabled = true;
 
-        let img = new Image;
+        let img = new Image();
         img.src = src;
         img.crossOrigin = "";
 

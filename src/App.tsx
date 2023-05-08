@@ -1,7 +1,7 @@
 import './styles/style.scss'
 import Header from './components/Header/Header';
-import AppRouter from './components/AppRouter';
-import Wrapper from './components/Wrapper';
+import AppRouter from './components/AppRouter/AppRouter';
+import Wrapper from './UI/Wrapper/Wrapper';
 import useOrderStore from './store/orderStore';
 
 function App() {

@@ -1,0 +1,46 @@
+@import './../../../styles/variables.scss';
+
+.searchbar_container {
+    position: relative;
+
+    @media (max-width:860px) {
+        order: 3;
+    }
+
+    @media (max-width:760px) {
+        width: 100%;
+    }
+
+    .searchbar {
+        font-size: 16px;
+        border: 1px solid $gWhite;
+        border-radius: 8px;
+        padding: 10px 30px 8px 32px;
+        width: 100%;
+
+        &:focus {
+            outline: unset;
+            border: 1px solid $gCyan;
+        }
+    }
+
+    .loupe {
+        width: 24px;
+        top: 7px;
+        left: 6px;
+        position: absolute;
+    }
+
+    .close {
+        position: absolute;
+        width: 25px;
+        top: 7px;
+        right: 5px;
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(0)
+        }
+
+    }
+}

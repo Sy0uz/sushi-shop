@@ -4,20 +4,21 @@ import { IOrderItem } from '../types/IOrderItem';
 import { ISushi } from '../types/ISushi';
 
 
-interface State {
+export interface OrderState {
     price: number;
     amount: number;
     onOrderPage: boolean;
     order: IOrderItem[];
 }
 
-interface Action {
+export interface OrderAction {
     addToOrder: (sushi: ISushi) => void;
-    deleteFromOrder: (sushi: ISushi) => void;
+    addToExistedOrder: (sushiId: number) => void;
+    deleteFromOrder: (sushiId: number) => void;
     updateOrderPage: (bool: boolean) => void;
 }
 
-const useOrderStore = create<State & Action>()(devtools((set) => ({
+const useOrderStore = create<OrderState & OrderAction>()(devtools((set) => ({
     price: 0,
     amount: 0,
     order: [],
@@ -29,37 +30,56 @@ const useOrderStore = create<State & Action>()(devtools((set) => ({
     )),
     addToOrder: (sushi: ISushi): void => set(state => (
         {
-            order: state.order.find(item => item.id === sushi.id)
-                ? state.order.map(item => {
-                    if (item.id === sushi.id) {
-                        item.count++;
-                        item.price += sushi.price;
-                    }
-                    return item;
-                })
-                : [
-                    ...state.order,
-                    { id: sushi.id, title: sushi.title, imageUrl: sushi.imageUrl, weight: sushi.weight, price: sushi.price, count: 1 }
-                ],
+            order: [
+                ...state.order,
+                { id: sushi.id, title: sushi.title, imageUrl: sushi.imageUrl, weight: sushi.weight, price: sushi.price, count: 1 }
+            ],
             price: state.price + sushi.price,
             amount: state.amount + 1
         }
     )),
-    deleteFromOrder: (sushi: ISushi): void => set(state => (
-        {
-            order: state.order.find(item => item.id === sushi.id)?.count === 1
-                ? state.order.filter(item => item.id !== sushi.id)
-                : state.order.map(item => {
-                    if (item.id === sushi.id) {
-                        item.count--;
-                        item.price -= sushi.price;
+    addToExistedOrder: (sushiId: number): void => {
+        set(state => (
+            {
+                order: state.order.map(item => {
+                    if (item.id === sushiId) {
+                        item.price += (item.price / item.count);
+                        item.count++;
+                        return item;
                     }
+
                     return item;
-                }),
-            price: state.price - sushi.price,
-            amount: state.amount - 1
-        }
-    ))
+                })
+            }
+        ))
+        set(state => (
+            {
+                price: state.order.reduce((prev, current) => prev + current.price, 0),
+                amount: state.amount + 1
+            }
+        ))
+    },
+    deleteFromOrder: (sushiId: number): void => {
+        set(state => (
+            {
+                order: state.order.find(item => item.id === sushiId)?.count === 1
+                    ? state.order.filter(item => item.id !== sushiId)
+                    : state.order.map(item => {
+                        if (item.id === sushiId) {
+                            item.price -= (item.price / item.count);
+                            item.count--;
+                        }
+                        return item;
+                    }),
+            }
+        ))
+        set(state => (
+            {
+                price: state.order.reduce((prev, current) => prev + current.price, 0),
+                amount: state.amount - 1
+            }
+        ))
+    }
 })))
 
 export default useOrderStore;

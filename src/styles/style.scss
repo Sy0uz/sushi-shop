@@ -17,4 +17,9 @@ body {
 
 .wrapper {
     padding: 20px 40px;
+    min-height: calc(100vh - 282px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

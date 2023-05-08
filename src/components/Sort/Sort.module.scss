@@ -1,0 +1,71 @@
+@import './../../styles/variables.scss';
+
+.wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    .orderBy_button {
+        background-color: unset;
+        border: none;
+        margin-left: 4px;
+        cursor: pointer;
+
+        &.active {
+            transform: scale(1, -1);
+        }
+    }
+
+    .sort_text {
+        font-size: 14px;
+        margin-right: 6px;
+    }
+
+    .sort_type {
+        color: $gRed;
+        font-weight: 700;
+        border-bottom: 1px dashed $gRed;
+        cursor: pointer;
+    }
+
+    .popup {
+        position: absolute;
+        width: 180px;
+        background-color: white;
+        border-radius: 6px;
+        box-shadow: 0px 0px 3px 1px rgb(172, 172, 172);
+        z-index: 2;
+        right: 0;
+        top: 30px;
+        display: flex;
+        flex-direction: column;
+        padding: 8px 0;
+        opacity: 1;
+        transition: 0.1s opacity ease-in-out;
+
+        &.closing {
+            opacity: 0;
+        }
+
+        &.closed {
+            opacity: 0;
+            z-index: -1;
+        }
+
+        >span {
+            padding: 8px 12px;
+            cursor: pointer;
+
+            &.active {
+                background-color: rgba($gRed, 0.2);
+                font-weight: bold;
+                color: $gRed;
+            }
+
+            &:hover {
+                background-color: rgba($gRed, 0.2);
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .count {
+        width: 20px;
+        font-weight: 700;
+    }
+
+    .button {
+        background-color: unset;
+        border: unset;
+        width: 36px;
+        height: 36px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        >img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}

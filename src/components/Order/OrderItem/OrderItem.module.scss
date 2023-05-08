@@ -1,0 +1,22 @@
+.order_container {
+    display: grid;
+    grid-template-columns: 100px 3fr 1fr 1fr 100px;
+    gap: 20px;
+    align-items: center;
+    transform: translateX(0px);
+    opacity: 1;
+    transition: 0.4s all ease-in-out;
+
+    &.deleting {
+        transform: translateX(-300px);
+        opacity: 0;
+    }
+
+    .image {
+        width: 100%;
+    }
+
+    .order_count {
+        text-align: center;
+    }
+}
