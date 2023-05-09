@@ -4,21 +4,22 @@ import { IOrderItem } from '../types/IOrderItem';
 import { ISushi } from '../types/ISushi';
 
 
-export interface OrderState {
+interface State {
     price: number;
     amount: number;
     onOrderPage: boolean;
     order: IOrderItem[];
 }
 
-export interface OrderAction {
+interface Action {
     addToOrder: (sushi: ISushi) => void;
     addToExistedOrder: (sushiId: number) => void;
     deleteFromOrder: (sushiId: number) => void;
     updateOrderPage: (bool: boolean) => void;
+    clearOrder: () => void;
 }
 
-const useOrderStore = create<OrderState & OrderAction>()(devtools((set) => ({
+const useOrderStore = create<State & Action>()(devtools((set) => ({
     price: 0,
     amount: 0,
     order: [],
@@ -77,6 +78,15 @@ const useOrderStore = create<OrderState & OrderAction>()(devtools((set) => ({
             {
                 price: state.order.reduce((prev, current) => prev + current.price, 0),
                 amount: state.amount - 1
+            }
+        ))
+    },
+    clearOrder: (): void => {
+        set(() => (
+            {
+                price: 0,
+                amount: 0,
+                order: []
             }
         ))
     }

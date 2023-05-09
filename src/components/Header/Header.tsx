@@ -5,22 +5,28 @@ import Logo from './Logo/Logo'
 import OrderBtn from './OrderButton/OrderButton'
 
 interface HeaderProps {
-    type?: 'default' | 'short';
+    type?: 'default' | 'order' | 'single';
 }
 
 const Header: FC<HeaderProps> = ({ type = 'default' }) => {
-    if (type === 'short')
-        return (
-            <header className={s.wrapper}>
-                <Logo />
-            </header>
-        )
-
     return (
-        <header className={s.wrapper}>
-            <Logo />
-            <Searchbar />
-            <OrderBtn />
+        <header className={type === 'single' ? [s.wrapper, s.single].join(' ') : s.wrapper}>
+            {
+                type === 'order'
+                    ? <>
+                        <Logo />
+                    </>
+                    : type === 'single'
+                        ? <>
+                            <Logo />
+                            <OrderBtn />
+                        </>
+                        : <>
+                            <Logo />
+                            <Searchbar />
+                            <OrderBtn />
+                        </>
+            }
         </header>
     )
 }

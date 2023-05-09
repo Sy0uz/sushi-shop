@@ -14,7 +14,7 @@ const AppRouter: FC = () => {
                     />
                 )
             }
-            <Route path='/' element={<Navigate to={RoutePath.HOME} />} />
+            <Route path='/' element={<Navigate to={RoutePath.SUSHI} />} />
             <Route path='/*' element={<Navigate to={RoutePath.ERROR} />} />
         </Routes>
     )

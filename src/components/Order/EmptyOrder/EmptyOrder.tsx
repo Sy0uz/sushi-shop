@@ -2,13 +2,14 @@ import { FC } from 'react'
 import s from './EmptyOrder.module.scss'
 import MyButton from '../../../UI/MyButton/MyButton'
 import { useNavigate } from 'react-router-dom'
+import { RoutePath } from '../../../router'
 
 const EmptyOrder: FC = () => {
 
     const route = useNavigate();
 
     const clickHanlder = () => {
-        route('/home');
+        route(RoutePath.SUSHI);
     }
 
     return (

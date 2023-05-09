@@ -3,8 +3,9 @@ import CategoryItem from './CategoryItem/CategoryItem';
 import s from './Category.module.scss'
 import useSushiStore from '../../store/sushiStore';
 import { shallow } from 'zustand/shallow';
+import { CategoriesEnum } from '../../types/ISushi';
 
-const data = [{ title: 'Все', value: -1 }, { title: 'Классические роллы', value: 0 }, { title: 'Запеченные роллы', value: 1 }, { title: 'Темпура', value: 2 }, { title: 'Мини роллы', value: 3 }];
+const data = [{ title: 'Все', value: -1 }, { title: CategoriesEnum.CLASSIC, value: 0 }, { title: CategoriesEnum.BAKED, value: 1 }, { title: CategoriesEnum.TEMPURA, value: 2 }, { title: CategoriesEnum.MINI, value: 3 }];
 
 const Categories: FC = () => {
 

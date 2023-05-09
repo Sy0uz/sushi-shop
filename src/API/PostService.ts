@@ -21,10 +21,7 @@ export class PostService {
 
         if (title) {
             params = {
-                sortBy,
-                order,
-                limit,
-                page,
+                ...obj,
                 title
             }
         }
@@ -35,5 +32,10 @@ export class PostService {
             params
         })
         return reponse.data;
+    }
+
+    static async getSingleSushi(id: string): Promise<ISushi> {
+        const response = await axios.get(`https://645650645f9a4f23614088c6.mockapi.io/sushi/${id}`)
+        return response.data;
     }
 }

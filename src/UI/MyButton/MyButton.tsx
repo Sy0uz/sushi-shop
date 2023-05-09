@@ -5,12 +5,28 @@ interface ButtonProps extends PropsWithChildren {
     className?: string;
     style?: CSSProperties;
     size?: 'large' | 'default' | 'small';
+    type?: 'default' | 'ghost';
     onClick?: () => void;
 }
 
-const MyButton: FC<ButtonProps> = ({ className, style, size = 'default', onClick, children }) => {
+const MyButton: FC<ButtonProps> = ({ className, style, size = 'default', type = 'default', onClick, children }) => {
 
-    let buttonClass = size === 'default' ? s.button : size === 'large' ? [s.button, s.large].join(' ') : [s.button, s.small].join(' ');
+    let buttonClass: string;
+
+    switch (size) {
+        case 'large':
+            buttonClass = [s.button, s.large].join(' ');
+            break;
+        case 'small':
+            buttonClass = [s.button, s.small].join(' ');
+            break;
+        default:
+            buttonClass = s.button;
+            break;
+    }
+
+    if (type === 'ghost')
+        buttonClass = [buttonClass, s.ghost].join(' ');
 
     return (
         <button

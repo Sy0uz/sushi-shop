@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import s from './OrderControl.module.scss';
 
 interface OrderControlProps {
@@ -10,7 +10,7 @@ interface OrderControlProps {
 const OrderControl: FC<OrderControlProps> = ({ count, addOrder, deleteOrder }) => {
 
     return (
-        <div className={s.wrapper}>
+        <div className={s.wrapper} onClick={e => e.preventDefault()}>
             <button className={s.button} onClick={deleteOrder}>
                 <img src="/images/delete.svg" alt="" />
             </button>
@@ -22,4 +22,4 @@ const OrderControl: FC<OrderControlProps> = ({ count, addOrder, deleteOrder }) =
     )
 }
 
-export default React.memo(OrderControl);
+export default OrderControl;

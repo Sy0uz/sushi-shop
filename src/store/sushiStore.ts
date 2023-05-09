@@ -72,7 +72,8 @@ const useSushiStore = create<State & Action>()(devtools((set) => ({
     updateQuery: (query: string): void => set(() => (
         {
             filter: -1,
-            query: query
+            query: query,
+            page: 1
         }
     )),
 })))

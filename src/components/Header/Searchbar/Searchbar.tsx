@@ -13,7 +13,7 @@ const Searchbar: FC = () => {
 
     return (
         <div className={s.searchbar_container}>
-            <img className={s.loupe} src="images/search.svg" alt="SearchImg" />
+            <img className={s.loupe} src="/images/search.svg" alt="search" />
             <input
                 value={query}
                 onChange={e => updateQuery(e.target.value)}
@@ -24,7 +24,7 @@ const Searchbar: FC = () => {
             {
                 query
                     ?
-                    <img className={s.close} src="images/close.svg" alt="closeImg" onClick={clearValue} />
+                    <img className={s.close} src="/images/close.svg" alt="close" onClick={clearValue} />
                     :
                     <>
                     </>

@@ -1,33 +1,17 @@
 import React, { FC } from 'react';
 import { ISushi } from '../../../types/ISushi';
 import s from './SushiCard.module.scss';
-import useOrderStore from '../../../store/orderStore';
-import AddButton from '../../../UI/AddButton/AddButton';
-import { shallow } from 'zustand/shallow';
+import AddButton from '../../AddButton/AddButton';
+import { Link } from 'react-router-dom';
 
 interface SushiProps {
     sushi: ISushi;
     added: boolean;
-    count: number;
 }
 
-const SushiCard: FC<SushiProps> = ({ sushi, added, count }) => {
-
-    const [addToOrder, addToExistedOrder, deleteFromOrder] = useOrderStore(state => [state.addToOrder, state.addToExistedOrder, state.deleteFromOrder], shallow)
-
-
-    const addHandler = () => {
-        added
-            ? addToExistedOrder(sushi.id)
-            : addToOrder(sushi)
-    }
-
-    const deleteHandler = () => {
-        deleteFromOrder(sushi.id)
-    }
-
+const SushiCard: FC<SushiProps> = ({ sushi, added }) => {
     return (
-        <div className={s.wrapper}>
+        <Link to={`./${sushi.id}`} className={s.wrapper}>
             <div className={s.image_container} style={{
                 backgroundImage: `url(${sushi.imageUrl})`
             }} />
@@ -35,16 +19,11 @@ const SushiCard: FC<SushiProps> = ({ sushi, added, count }) => {
                 <h3 className={s.title}>{sushi.title}</h3>
                 <div className={s.description_container}>
                     <div className={s.price}>{sushi.price} ₽</div>
-                    <AddButton
-                        onAdd={addHandler}
-                        onDelete={deleteHandler}
-                        added={added}
-                        count={count}
-                    />
+                    <AddButton sushi={sushi} />
                 </div>
             </div>
 
-        </div>
+        </Link>
     )
 }
 

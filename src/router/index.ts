@@ -1,5 +1,6 @@
 import OrderPage from "../pages/OrderPage";
 import HomePage from "../pages/HomePage";
+import SushiPage from "../pages/SushiPage";
 
 export interface IRoute {
     path: string;
@@ -7,12 +8,13 @@ export interface IRoute {
 }
 
 export enum RoutePath {
-    HOME = "/home",
+    SUSHI = "/sushi",
     ORDER = "/order",
     ERROR = "/error"
 }
 
 export const publicRoutes: IRoute[] = [
-    { path: RoutePath.HOME, component: HomePage },
+    { path: RoutePath.SUSHI, component: HomePage },
     { path: RoutePath.ORDER, component: OrderPage },
+    { path: '/sushi/:id', component: SushiPage }
 ]

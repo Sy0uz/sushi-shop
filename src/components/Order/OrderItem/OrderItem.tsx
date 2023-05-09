@@ -3,6 +3,7 @@ import { IOrderItem } from '../../../types/IOrderItem';
 import s from './OrderItem.module.scss';
 import OrderControl from './OrderControl/OrderControl';
 import useOrderStore from '../../../store/orderStore';
+import { Link } from 'react-router-dom';
 
 interface OrderItemProps {
     item: IOrderItem;
@@ -30,7 +31,7 @@ const OrderItem: FC<OrderItemProps> = ({ item }) => {
     }
 
     return (
-        <div className={deleting ? [s.order_container, s.deleting].join(' ') : s.order_container}>
+        <Link to={`/sushi/${item.id}`} className={deleting ? [s.order_container, s.deleting].join(' ') : s.order_container}>
             <img className={s.image} src={item.imageUrl} alt={`${item.title}-img`} />
             <h3>{item.title}</h3>
             <span>{item.weight}г.</span>
@@ -38,7 +39,7 @@ const OrderItem: FC<OrderItemProps> = ({ item }) => {
             <span className={s.order_count}>
                 <OrderControl count={item.count} addOrder={addHandler} deleteOrder={deleteHandler} />
             </span>
-        </div>
+        </Link>
     )
 }
 

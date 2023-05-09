@@ -6,8 +6,8 @@ import { RoutePath } from '../../../router'
 const Logo: FC = () => {
 
     return (
-        <Link className={s.logo_container} to={RoutePath.HOME}>
-            <img src="/images/sushiLogo.svg" alt="" className={s.logotype} />
+        <Link className={s.logo_container} to={RoutePath.SUSHI}>
+            <img src="/images/sushiLogo.svg" alt="logo" className={s.logotype} />
             <div className={s.title}>
                 Syouz's SUSHI
             </div>

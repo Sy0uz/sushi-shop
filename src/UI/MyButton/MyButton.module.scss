@@ -22,4 +22,10 @@
     &:active {
         transform: translateY(1px);
     }
+
+    &.ghost {
+        background-color: unset;
+        color: black;
+        padding: 0;
+    }
 }

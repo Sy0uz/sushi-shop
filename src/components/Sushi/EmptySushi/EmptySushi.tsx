@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import s from './EmptySushi.module.scss';
 
 const EmptySushi: FC = () => {
@@ -11,4 +11,4 @@ const EmptySushi: FC = () => {
     )
 }
 
-export default EmptySushi
+export default React.memo(EmptySushi);

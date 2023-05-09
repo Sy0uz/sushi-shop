@@ -38,5 +38,16 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        gap: 8px;
+
+        .clear_button {
+            background-color: $gRed;
+
+            .deleteImg {
+                width: 19px;
+            }
+        }
+
+
     }
 }
