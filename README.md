@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# You can try this project on Netlify
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Open project on Netlify [Sushi shop](https://magenta-sunshine-5b002b.netlify.app).
 
 ## Available Scripts
 
